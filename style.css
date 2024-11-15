@@ -1,0 +1,87 @@
+/* Performance Improvements */
+/* Add content-visibility for better rendering performance */
+.fact-container {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+    /* existing properties remain... */
+}
+
+/* Add will-change for smoother animations */
+#factDisplay {
+    will-change: opacity;
+    /* existing properties remain... */
+}
+
+/* Error Handling & User Experience */
+/* Add loading state styles */
+.loading-state {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Add error state styles */
+.error-message {
+    color: #e74c3c;
+    padding: 1rem;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    margin: 1rem 0;
+}
+
+/* Code Organization - Group related properties */
+:root {
+    /* Theme Colors */
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+    
+    /* Layout */
+    --max-width: 800px;
+    --container-padding: 2rem;
+    
+    /* Animation */
+    --transition-speed: 0.3s;
+    
+    /* Typography */
+    --base-font-size: 16px;
+    --line-height: 1.6;
+}
+
+/* Accessibility Improvements */
+/* Focus styles */
+#generateBtn:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+    #generateBtn {
+        border: 2px solid currentColor;
+    }
+    
+    .fact-container {
+        border: 1px solid currentColor;
+    }
+}
+
+/* Larger text spacing for readability */
+@media screen and (min-width: 768px) {
+    body {
+        letter-spacing: 0.01em;
+        word-spacing: 0.05em;
+    }
+}
+
+/* Print styles */
+@media print {
+    .fact-container {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    
+    #generateBtn {
+        display: none;
+    }
+}
