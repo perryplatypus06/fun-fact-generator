@@ -1,96 +1,15 @@
-// Constants and Configuration
-const CONFIG = {
-    transitionDuration: 300,
-    errorMessage: 'Unable to generate fact. Please try again.',
-};
-
-// State management
-let currentFactIndex = -1;
-let isTransitioning = false;
-
-// Cache DOM elements early with error handling
-function initializeApp() {
-    const elements = {
-        factDisplay: document.getElementById('factDisplay'),
-        generateBtn: document.getElementById('generateBtn')
-    };
-
-    if (!elements.factDisplay || !elements.generateBtn) {
-        console.error('Required DOM elements not found');
-        document.body.innerHTML = '<p role="alert">App initialization failed. Please refresh.</p>';
-        return null;
-    }
-
-    return elements;
-}
-
-// Improved random fact generation with better validation
-function getRandomFact(facts) {
-    if (!Array.isArray(facts) || facts.length === 0) {
-        throw new Error('Invalid facts array');
-    }
-
-    let newIndex;
-    const maxAttempts = facts.length * 2;
-    let attempts = 0;
-
-    do {
-        newIndex = Math.floor(Math.random() * facts.length);
-        attempts++;
-    } while (newIndex === currentFactIndex && attempts < maxAttempts && facts.length > 1);
-
-    currentFactIndex = newIndex;
-    return facts[newIndex];
-}
-
-// Enhanced display function with debouncing and accessibility
-function displayNewFact(elements) {
-    if (isTransitioning) return; // Prevent rapid-fire clicks
-    isTransitioning = true;
-
-    elements.generateBtn.disabled = true; // Prevent multiple clicks
-    elements.factDisplay.style.opacity = '0';
-
-    try {
-        setTimeout(() => {
-            const fact = getRandomFact(funFacts);
-            elements.factDisplay.textContent = fact;
-            elements.factDisplay.style.opacity = '1';
-            elements.generateBtn.disabled = false;
-            isTransitioning = false;
-            
-            // Announce to screen readers
-            elements.factDisplay.setAttribute('aria-label', `New fact: ${fact}`);
-        }, CONFIG.transitionDuration);
-    } catch (error) {
-        console.error('Error:', error);
-        elements.factDisplay.textContent = CONFIG.errorMessage;
-        elements.factDisplay.style.opacity = '1';
-        elements.generateBtn.disabled = false;
-        isTransitioning = false;
-    }
-}
-
-// Initialize app and set up event listeners
-document.addEventListener('DOMContentLoaded', () => {
-    const elements = initializeApp();
-    if (!elements) return;
-
-    // Add keyboard support
-    elements.generateBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            displayNewFact(elements);
-        }
-    });
-
-    elements.generateBtn.addEventListener('click', () => displayNewFact(elements));
-    displayNewFact(elements); // Show initial fact
-});
 // Your existing fun facts array
 const funFacts = [
     "I've hiked all major trails in Yosemite National Park over three separate visits",
-    // ... rest of your facts
+    "I practice guitar for 30 minutes every morning before work, currently mastering basic chords",
+    "I maintain a small herb garden with basil, cilantro, and mint for my weekly cooking adventures",
+    "I created a simple spreadsheet system to track shelter animal adoption rates",
+    "My morning routine includes 20 minutes of yoga, usually with my cat watching from the windowsill",
+    "I pack homemade trail mix and energy bars for all my hiking adventures",
+    "My adopted cat Felix has been with me for 3 years, we found each other at the shelter where I volunteer",
+    "I've photographed over 50 different hiking trails across 5 national parks",
+    "I volunteer at the local animal shelter every Saturday morning",
+    "I use my software development skills to maintain the animal shelter's website"
 ];
 
 // Track the last shown fact to prevent repetition
@@ -124,4 +43,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     });
 });
-
