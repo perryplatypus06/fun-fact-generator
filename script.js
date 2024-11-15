@@ -87,3 +87,41 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.generateBtn.addEventListener('click', () => displayNewFact(elements));
     displayNewFact(elements); // Show initial fact
 });
+// Your existing fun facts array
+const funFacts = [
+    "I've hiked all major trails in Yosemite National Park over three separate visits",
+    // ... rest of your facts
+];
+
+// Track the last shown fact to prevent repetition
+let lastFactIndex = -1;
+
+// Function to get a random fact
+function getRandomFact() {
+    let newIndex;
+    do {
+        newIndex = Math.floor(Math.random() * funFacts.length);
+    } while (newIndex === lastFactIndex && funFacts.length > 1);
+    
+    lastFactIndex = newIndex;
+    return funFacts[newIndex];
+}
+
+// Initialize the fact display
+document.addEventListener('DOMContentLoaded', () => {
+    const factDisplay = document.getElementById('factDisplay');
+    const generateBtn = document.getElementById('generateBtn');
+    
+    // Show initial fact
+    factDisplay.textContent = getRandomFact();
+    
+    // Add click handler for the button
+    generateBtn.addEventListener('click', () => {
+        factDisplay.style.opacity = '0';
+        setTimeout(() => {
+            factDisplay.textContent = getRandomFact();
+            factDisplay.style.opacity = '1';
+        }, 300);
+    });
+});
+
