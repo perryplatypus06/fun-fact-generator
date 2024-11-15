@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fun facts generator sharing interesting details about a hiking, tech-loving, animal shelter volunteer">
+    <!-- Performance Improvements -->
+    <link rel="stylesheet" href="style.css" media="all">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- SEO and Social Sharing -->
+    <meta name="theme-color" content="#2c3e50">
+    <title>My Fun Facts Generator</title>
+</head>
+<body>
+    <header role="banner">
+        <h1>My Fun Facts Generator</h1>
+    </header>
+
+    <main role="main">
+        <section class="fact-container">
+            <!-- Error Handling -->
+            <noscript>
+                <p class="error-message">Please enable JavaScript to view fun facts.</p>
+            </noscript>
+            
+            <!-- Accessibility and UX Improvements -->
+            <div id="factDisplay" 
+                 aria-live="polite"
+                 role="region"
+                 aria-label="Current fun fact">
+                <p class="loading">Loading fun facts...</p>
+            </div>
+            <button id="generateBtn" 
+                    aria-label="Generate new fun fact"
+                    class="generate-button"
+                    type="button">
+                Generate New Fact
+            </button>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2024 Fun Facts Generator. All rights reserved.</p>
+    </footer>
+
+    <!-- Performance: Defer non-critical JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html>
