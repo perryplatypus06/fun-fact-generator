@@ -2,14 +2,17 @@
 
 ## 📌 Description
 The Fun Fact Generator is a simple and interactive web application that displays a random fun fact every time a button is clicked. Built using HTML, CSS, and JavaScript, this project provides an engaging way to learn interesting and surprising facts with just a click!
+
 ## 🚀 Features
 🖱️ Click a button to generate a random fun fact
 🎨 Simple and visually appealing UI
 📜 A collection of fun and fascinating facts
 🔄 Can be expanded with more facts over time
 
+![image](https://github.com/user-attachments/assets/b603a015-0b62-4591-96f2-cb81373b68f5)
+
 ## 📂 Folder Structure
-```
+
 /project-root
 │── index.html       # Main HTML file
 │── style.css        # Stylesheet for the project
