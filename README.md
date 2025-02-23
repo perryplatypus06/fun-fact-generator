@@ -45,7 +45,3 @@ The Fun Fact Generator is a simple and interactive web application that displays
 
 ## 📝 License
 This project is licensed under the [MIT License](LICENSE).  
-
----
-
-Would you like any modifications based on your project’s specifics? 😊
